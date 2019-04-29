@@ -18,15 +18,14 @@ public class OI {
   Joystick js = new Joystick(0);
 
   Button b1 = new JoystickButton( js, 1 ),
+  b2 = new JoystickButton( js, 2 ),
   b3 = new JoystickButton( js, 3 ),
   b4 = new JoystickButton( js, 4 );
 
   public OI () {
 
-    b1.whenPressed(new intakeEjectHatch());
-
-    b3.whenPressed(new intakeHatch());
-    b4.whenPressed(new ejectHatch(1));
+    b1.whenPressed(new ejectHatch(1));
+    b2.whenPressed(new intakeEjectHatch());
 
   }
 
