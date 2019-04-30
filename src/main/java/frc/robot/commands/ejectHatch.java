@@ -1,18 +1,17 @@
 package frc.robot.commands;
 
-import frc.robot.subsystems.HatchIntake;
+import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ejectHatch extends Command {
 
   private double timeout;
-  HatchIntake hatchIntake;
+//  HatchIntake hatchIntake;
 
   public ejectHatch(double time) {
 
-    requires(hatchIntake);
-
     timeout = time;
+    requires(Robot.hatchIntake);
 
   }
 
@@ -23,7 +22,7 @@ public class ejectHatch extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   protected void execute() {
-    hatchIntake.eject();
+    Robot.hatchIntake.eject();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -35,12 +34,12 @@ public class ejectHatch extends Command {
 
   // Called once after isFinished returns true
   protected void end() {
-    hatchIntake.disable();
+    Robot.hatchIntake.disable();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   protected void interrupted() {
-    hatchIntake.disable();
+    Robot.hatchIntake.disable();
   }
 }

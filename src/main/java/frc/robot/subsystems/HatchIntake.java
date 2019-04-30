@@ -23,17 +23,17 @@ public class HatchIntake extends Subsystem {
   }
 
   public void intake() {
-    talon.set(ControlMode.PercentOutput, 0.5);
+    talon.set(ControlMode.PercentOutput, -0.5);
     DriverStation.reportError( "Current: " + talon.getOutputCurrent() + " amps", false );
   }
 
   public void hold() {
-    talon.set(ControlMode.PercentOutput, 0.1);
+    talon.set(ControlMode.PercentOutput, -0.1);
     DriverStation.reportError( "Current: " + talon.getOutputCurrent() + " amps", false );
   }
   
   public void eject() {
-    talon.set(ControlMode.PercentOutput, -0.5);
+    talon.set(ControlMode.PercentOutput, 0.5);
     DriverStation.reportError( "Current: " + talon.getOutputCurrent() + " amps", false );
   }
 

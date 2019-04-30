@@ -1,21 +1,16 @@
 package frc.robot.commands;
-
-import frc.robot.subsystems.HatchIntake;
+import frc.robot.Robot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class intakeHatch extends Command {
 
-  
   private boolean justStamped;
   private double timestamp;
-  HatchIntake hatchIntake;
 
   public intakeHatch() {
 
-    hatchIntake = new HatchIntake();
-    requires(hatchIntake);
-
+    requires(Robot.hatchIntake);
     justStamped = false;
 
   }
@@ -26,11 +21,11 @@ public class intakeHatch extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   protected void execute() {
-    hatchIntake.intake();
-    if( hatchIntake.current() > 16 && justStamped == false ) {
+    Robot.hatchIntake.intake();
+    if( Robot.hatchIntake.current() > 16 && justStamped == false ) {
       timestamp = Timer.getFPGATimestamp();
       justStamped = true;
-    } else if( hatchIntake.current() < 16 && Timer.getFPGATimestamp() - timestamp > 500 && justStamped == true ) {
+    } else if( Robot.hatchIntake.current() < 16 && Timer.getFPGATimestamp() - timestamp > 500 && justStamped == true ) {
       justStamped = false;
     }
   }
@@ -38,7 +33,7 @@ public class intakeHatch extends Command {
   // Make this return true when this Command no longer needs to run execute()
   protected boolean isFinished() {
 
-    if( hatchIntake.current() > 16 && Timer.getFPGATimestamp() - timestamp > 500 && justStamped == true ) {
+    if( Robot.hatchIntake.current() > 16 && Timer.getFPGATimestamp() - timestamp > 500 && justStamped == true ) {
       return true;
     } else {
       return false;
@@ -48,11 +43,12 @@ public class intakeHatch extends Command {
 
   // Called once after isFinished returns true
   protected void end() {
-    hatchIntake.disable();
+    Robot.hatchIntake.disable();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   protected void interrupted() {
+    Robot.hatchIntake.disable();
   }
 }

@@ -2,10 +2,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import frc.robot.subsystems.HatchIntake;
 
 
 public class Robot extends TimedRobot {
 
+  public static HatchIntake hatchIntake = new HatchIntake();
   OI oi;
 
   public void robotInit() {
