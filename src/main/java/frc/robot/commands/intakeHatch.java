@@ -6,10 +6,10 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class intakeHatch extends Command {
 
+  
+  private boolean justStamped;
   private double timestamp;
   HatchIntake hatchIntake;
-
-  boolean justStamped;
 
   public intakeHatch() {
 

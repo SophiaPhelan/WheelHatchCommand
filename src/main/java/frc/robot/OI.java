@@ -3,9 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.intakeHatch;
 import frc.robot.commands.ejectHatch;
-import frc.robot.commands.intakeEjectHatch;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -25,7 +23,6 @@ public class OI {
   public OI () {
 
     b1.whenPressed(new ejectHatch(1));
-    b2.whenPressed(new intakeEjectHatch());
 
   }
 

@@ -26,6 +26,11 @@ public class HatchIntake extends Subsystem {
     talon.set(ControlMode.PercentOutput, 0.5);
     DriverStation.reportError( "Current: " + talon.getOutputCurrent() + " amps", false );
   }
+
+  public void hold() {
+    talon.set(ControlMode.PercentOutput, 0.1);
+    DriverStation.reportError( "Current: " + talon.getOutputCurrent() + " amps", false );
+  }
   
   public void eject() {
     talon.set(ControlMode.PercentOutput, -0.5);
